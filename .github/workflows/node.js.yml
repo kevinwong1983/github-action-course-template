@@ -46,3 +46,18 @@ jobs:
         npm test
       env:
         CI: true
+
+  bla:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Get the sources
+        uses: actions/checkout@v1
+      - name: Create a release draft from a milestone
+        id: create-release-draft
+        uses: ./
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Print the URL of the release draft
+        if: steps.create-release-draft.outputs.release-url != ''
+        run: echo ${{ steps.create-release-draft.outputs.release-url }}
