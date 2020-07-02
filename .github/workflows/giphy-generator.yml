@@ -8,10 +8,12 @@ on:
   issue_comment:
     types: [created, edited]
     
+name: GIPHY Generator
+
 jobs:
   giphy-generator:
-    runs-on: unbuntu-latest
-    
+    name: GIPHY Generator
+    runs-on: ubuntu-latest
     steps:
     - name: GIPHY Generator
       uses: IAmHughes/giphy-generator@v1.0.0
